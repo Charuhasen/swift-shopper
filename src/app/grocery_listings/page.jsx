@@ -1,16 +1,14 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import organizeGroceryItems from "../../utils/openai";
 
 export default function GroceryListing() {
+    const [groceryList, setGroceryList] = useState([]);
+
     useEffect(() => {
         const storedDataString = localStorage.getItem("GroceryList");
         let storedData = JSON.parse(storedDataString);
-
-        if (!Array.isArray(storedData)) {
-            storedData = Array.isArray(storedData) ? storedData : [];
-        }
-        organizeGroceryItems(storedData);
+        organizeGroceryItems(storedData.groceryList);
     }, []);
 
     return (

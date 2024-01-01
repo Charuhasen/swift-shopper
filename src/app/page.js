@@ -29,6 +29,7 @@ export default function Home() {
     // Save grocery list to local storage function
     const saveToLocalStorage = () => {
         const data = { groceryList: userGroceryList };
+        console.log(data);
         const dataString = JSON.stringify(data);
         localStorage.setItem("GroceryList", dataString);
     };
